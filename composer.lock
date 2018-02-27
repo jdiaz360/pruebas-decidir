@@ -1,0 +1,45 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "ecb01635964c4428c9dcd439fc364e12",
+    "packages": [
+        {
+            "name": "decidir2/php-sdk",
+            "version": "V1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/decidir/sdk-php-v2.git",
+                "reference": "23912cfb5dd8e8c421d9e894d37d5495332f9761"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/decidir/sdk-php-v2/zipball/23912cfb5dd8e8c421d9e894d37d5495332f9761",
+                "reference": "23912cfb5dd8e8c421d9e894d37d5495332f9761",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Decidir\\": "Decidir/lib"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "SDK para Decidir",
+            "time": "2017-10-09T13:34:25+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

@@ -1,0 +1,12 @@
+{
+    "name": "pagos360/decidir",
+    "authors": [
+        {
+            "name": "Jesús Díaz",
+            "email": "jesusdiazbc@gmail.com"
+        }
+    ],
+    "require": {
+        "decidir2/php-sdk": "^1.1"
+    }
+}

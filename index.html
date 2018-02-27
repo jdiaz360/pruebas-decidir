@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://live.decidir.com/static/v2/decidir.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" method="post" id="formulario">
+        <fieldset>
+            <ul>
+                <li>
+                    <label for="card_number">Numero de tarjeta:</label>
+                    <input type="text" data-decidir="card_number" placeholder="XXXXXXXXXXXXXXXX" value="4507990000004905" />
+                </li>
+                <li>
+                    <label for="security_code">Codigo de seguridad:</label>
+                    <input type="text" data-decidir="security_code" placeholder="XXX" value="123" />
+                </li>
+                <li>
+                    <label for="card_expiration_month">Mes de vencimiento:</label>
+                    <input type="text" data-decidir="card_expiration_month" placeholder="MM" value="12" />
+                </li>
+                <li>
+                    <label for="card_expiration_year">Año de vencimiento:</label>
+                    <input type="text" data-decidir="card_expiration_year" placeholder="AA" value="20" />
+                </li>
+                <li>
+                    <label for="card_holder_name">Nombre del titular:</label>
+                    <input type="text" data-decidir="card_holder_name" placeholder="TITULAR" value="TITULAR" />
+                </li>
+                <li>
+                    <label for="card_holder_doc_type">Tipo de documento:</label>
+                    <select data-decidir="card_holder_doc_type">
+                        <option value="dni">DNI</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="card_holder_doc_type">Numero de documento:</label>
+                    <input type="text" data-decidir="card_holder_doc_number" placeholder="XXXXXXXXXX" value="27859328" />
+                </li>
+            </ul>
+            <input type="submit" value="Generar Token" />
+        </fieldset>
+    </form>
+
+    <script>
+        const publicApiKey = "a19a2afed2334b49822370724d0313f5";
+        const urlSandbox = "https://developers.decidir.com/api/v2";
+
+        //Para el ambiente de desarrollo
+        const decidir = new Decidir(urlSandbox, true);
+
+        //Se indica la public API Key
+        decidir.setPublishableKey(publicApiKey);
+        decidir.setTimeout(5000);//timeout de 5 segundos
+
+        //formulario
+        var form = document.querySelector('#formulario');
+    
+
+        //funcion para manejar la respuesta
+        function sdkResponseHandler(status, response) {
+            if (status != 200 && status != 201) {
+                //Manejo de error donde response = {error: [{error:"tipo de error", param:"parametro con error"},...]}
+                //...codigo...
+            } else {
+                //Manejo de respuesta donde response = {token: "99ab0740-4ef9-4b38-bdf9-c4c963459b22"}
+                //..codigo...
+                console.log(response.id)
+            }
+        }
+
+        //funcion de invocacion con sdk
+        function sendForm(event) {
+            event.preventDefault();
+            decidir.createToken(form, sdkResponseHandler);//formulario y callback
+            return false;
+        }
+
+        $('#formulario').on('submit', sendForm)
+
+    </script>
+</body>
+
+</html>
